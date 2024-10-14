@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='utf-8' />
+	<title>Pagina Personal</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	
+</head>
+<body>
+    <header>
+		<nav>
+			<ul>
+                <li><a href='index.html'>Inicio</a></li>
+                <li><a href='autobiografia.html'>Quién soy</a></li>
+                <li><a href='galeria.html'>Galería</a></li>
+                <li><a href='contacto.html'>Contacto</a></li>
+				<li><a href="EjerciciosJavaScript.html">Ejercios JS</a></li>
+            </ul>
+		</nav>
+	</header>
+
+    Aqui podras encontrar algunos ejercicios hechos en java script y con ayuda de html para que sea mas intuitivo
+
+    <div id="Fecha">La Fecha y hora es:</div>
+
+    <script type="text/javascript">
+   
+        const fecha = new Date();
+
+    
+        const opciones = { weekday: 'long', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+        const fechaFormateada = fecha.toLocaleDateString('es-ES', opciones);
+
+    
+        document.getElementById("Fecha").innerHTML = "La Fecha y hora es: " + fechaFormateada;
+    </script>
+     <h2>Conversor de euros </h2>
+    <div>
+       
+
+    <script type="text/javascript">
+        let pesosMexicano = 10;
+        document.write(pesosMexicano + " pesos son "+ pesosMexicano*0.054 + " Dolares <br>");
+        document.write(pesosMexicano + " pesos son "+ pesosMexicano*0.046 + " euros");
+    </script>
+    </div>
+    
+
+<h2>Calculadora de Potencias</h2>
+    <div>
+        <input type="number" id="numero" placeholder="Ingresa un número">
+
+        <select id="potencia">
+            <option value="2">Elevar al 2</option>
+            <option value="3">Elevar al 3</option>
+            <option value="4">Elevar al 4</option>
+        </select>
+
+        <button onclick="calcular()">Calcular</button>
+        <button onclick="limpiar()">Limpiar</button>
+
+    </div>
+
+    <script>
+        function calcular() {
+        var numero = document.getElementById("numero").value;
+        var potencia = document.getElementById("potencia").value;
+            if (numero === "") {
+            alert("Por favor, ingresa un número.");
+            return;
+             }
+                var resultado = Math.pow(numero, potencia);
+                document.getElementById("numero").value = resultado;
+        }   
+
+        function limpiar() {
+            document.getElementById("numero").value = "";
+        }
+    </script>
+
+
+<h2>Cuestionario sobre mí</h2>
+
+<div class="question" id="q1">
+    <p>1. Prefiero brawl star o LOL (Verdadero/Falso)</p>
+    <label><input type="radio" name="q1" value="true"> BRAWL</label><br>
+    <label><input type="radio" name="q1" value="false"> LOL</label>
+    <div class="result" id="result1"></div>
+</div>
+
+<div class="question" id="q2">
+    <p>2. Me gusta la pizza con piña?</p>
+    <label><input type="radio" name="q2" value="true"> Verdadero</label><br>
+    <label><input type="radio" name="q2" value="false"> Falso</label>
+    <div class="result" id="result2"></div>
+</div>
+
+<div class="question" id="q3">
+    <p>3. ¿La función `qqPlot` pertenece a la librería `car`?</p>
+    <label><input type="radio" name="q3" value="true"> Verdadero</label><br>
+    <label><input type="radio" name="q3" value="false"> Falso</label>
+    <div class="result" id="result3"></div>
+</div>
+
+<div class="question" id="q4">
+    <p>4. Tengo 20 años?</p>
+    <label><input type="radio" name="q4" value="true"> Verdadero</label><br>
+    <label><input type="radio" name="q4" value="false"> Falso</label>
+    <div class="result" id="result4"></div>
+</div>
+
+<div class="question" id="q5">
+    <p>5. Donde vivo? </p>
+    <label><input type="radio" name="q5" value="true"> Tulum</label><br>
+    <label><input type="radio" name="q5" value="false"> Tizimin</label>
+    <div class="result" id="result5"></div>
+</div>
+
+<button id="clearBtn">Limpiar Cuestionario</button>
+
+<script>
+    const correctAnswers = {
+        q1: "true",
+        q2: "false",
+        q3: "true",
+        q4: "false",
+        q5: "true"
+    };
+
+    document.querySelectorAll('input[type="radio"]').forEach(radio => {
+        radio.addEventListener('change', () => {
+            const questionId = radio.name;
+            const resultElement = document.getElementById('result' + questionId.charAt(1));
+            
+            if (radio.value === correctAnswers[questionId]) {
+                resultElement.textContent = "Correcto!";
+                resultElement.className = "result correct";
+            } else {
+                resultElement.textContent = "Incorrecto.";
+                resultElement.className = "result incorrect";
+            }
+        });
+    });
+
+    document.getElementById('clearBtn').addEventListener('click', () => {
+        document.querySelectorAll('input[type="radio"]').forEach(radio => radio.checked = false);
+        document.querySelectorAll('.result').forEach(result => result.textContent = "");
+    });
+</script>
+    
+</body>
+</html>
